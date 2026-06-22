@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MalikHw47 · lvl reqs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+      font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
+      padding: 20px;
+    }
+    .box {
+      background: #ffffff;
+      border: 2px solid #000000;
+      max-width: 500px;
+      width: 100%;
+      padding: 2rem 2rem 1.8rem;
+      box-shadow: 8px 8px 0 #000000;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-align: center;
+      margin-bottom: 1.8rem;
+      color: #000000;
+      border-bottom: 3px solid #000;
+      padding-bottom: 0.4rem;
+      font-family: 'Google Sans', 'Noto Sans', sans-serif;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      color: #000;
+      letter-spacing: 0.3px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: #ffffff;
+      border: 2px solid #000000;
+      padding: 0.6rem 0.8rem;
+      font-family: 'Noto Sans', 'Google Sans', sans-serif;
+      font-size: 0.95rem;
+      color: #000;
+      margin-top: 0.3rem;
+      border-radius: 0;
+      outline: none;
+      transition: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #000000;
+      background: #f6f6f6;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 12px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    button {
+      width: 100%;
+      background: #ffffff;
+      border: 3px solid #000000;
+      padding: 0.8rem;
+      font-family: 'Google Sans', 'Noto Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      color: #000000;
+      cursor: pointer;
+      margin-top: 1.8rem;
+      box-shadow: 4px 4px 0 #000;
+      transition: none;
+    }
+    button:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0 #000;
+    }
+    #msg {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #000000;
+      min-height: 1.8rem;
+    }
+    .v-footer {
+      margin-top: 1.5rem;
+      font-family: 'Noto Sans', 'Google Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #333;
+      border-top: 1px solid #ccc;
+      padding-top: 0.7rem;
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+    }
+    .inline-hint {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #444;
+      margin-left: 4px;
+    }
+    .field-group {
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>MalikHw47 lvl reqs</h2>
+  <form id="levelForm">
+    <!-- 1: level ID -->
+    <label for="levelId">LEVEL ID</label>
+    <input type="text" id="levelId" required placeholder="e.g. 123456" inputmode="numeric">
+
+    <!-- 2: Twitch or YouTube? -->
+    <label for="platform">TWITCH OR YOUTUBE?</label>
+    <select id="platform" required>
+      <option value="youtube">YouTube</option>
+      <option value="twitch">Twitch</option>
+    </select>
+
+    <!-- 4: username (changes label based on platform) -->
+    <label id="usernameLabel" for="username">YOUTUBE USERNAME? (BE DEADASS)</label>
+    <input type="text" id="username" placeholder="your channel name" required>
+
+    <!-- 5: video link (optional) -->
+    <label for="videoLink">YT SHOWCASE LINK (OPTIONAL)</label>
+    <input type="url" id="videoLink" placeholder="https://...">
+
+    <!-- 3: notes -->
+    <label for="notes">NOTES</label>
+    <textarea id="notes" rows="2" placeholder="any extra info"></textarea>
+
+    <button type="submit">SUBMIT</button>
+  </form>
+  <div id="msg"></div>
+</div>
+<div class="v-footer">2026 MalikHw47. GPLv3.</div>
+
+<script>
+  (function() {
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywcjan1Uk7Hcv0TZWi4pLyFWKjDYzWlZJMdsUEEFmy1J05j6AV1WifmXNfYJVDzMWG/exec";
+
+    const form = document.getElementById('levelForm');
+    const msgEl = document.getElementById('msg');
+    const platformSelect = document.getElementById('platform');
+    const usernameLabel = document.getElementById('usernameLabel');
+    const usernameInput = document.getElementById('username');
+
+    // update label when platform changes
+    function updateUsernameLabel() {
+      const platform = platformSelect.value;
+      if (platform === 'youtube') {
+        usernameLabel.textContent = 'YOUTUBE USERNAME? (BE DEADASS)';
+      } else {
+        usernameLabel.textContent = 'TWITCH USERNAME? (BE DEADASS)';
+      }
+    }
+    platformSelect.addEventListener('change', updateUsernameLabel);
+    updateUsernameLabel(); // initial
+
+    // helper: fetch level data from gdbrowser
+    async function fetchLevelData(levelId) {
+      const url = `https://gdbrowser.com/api/level/${levelId}`;
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`GDBrowser error: ${res.status}`);
+      }
+      return res.json();
+    }
+
+    // main submit
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      msgEl.textContent = '…';
+
+      const levelIdRaw = document.getElementById('levelId').value.trim();
+      const platform = platformSelect.value;
+      const username = usernameInput.value.trim();
+      const videoLink = document.getElementById('videoLink').value.trim();
+      const notesRaw = document.getElementById('notes').value.trim();
+
+      // basic validation
+      if (!levelIdRaw) {
+        msgEl.textContent = 'Please enter a Level ID.';
+        return;
+      }
+      if (!username) {
+        msgEl.textContent = `Please enter your ${platform} username.`;
+        return;
+      }
+
+      // 1. fetch level info from gdbrowser
+      let levelData;
+      try {
+        levelData = await fetchLevelData(levelIdRaw);
+      } catch (err) {
+        msgEl.textContent = `Error fetching level: ${err.message}`;
+        return;
+      }
+
+      // check if level exists (basic)
+      if (!levelData || levelData.error || !levelData.name) {
+        msgEl.textContent = `Level not found or invalid ID.`;
+        return;
+      }
+
+      const levelName = levelData.name || 'Unnamed';
+      const author = levelData.author || 'Unknown';
+      const stars = levelData.stars ?? '?';
+      // level type: if length is 'plat' → platformer, else classic
+      const length = (levelData.length || '').toLowerCase();
+      const levelType = (length === 'plat' || length === 'platformer') ? 'Platformer' : 'Classic';
+
+      // 2. confirmation popup
+      const confirmMsg = `Sure "${levelName}" is your level?`;
+      if (!window.confirm(confirmMsg)) {
+        msgEl.textContent = 'Cancelled.';
+        return;
+      }
+
+      // 3. build payload for google script
+      const notesCombined = `from ${platform}, from ${username} - ${notesRaw || 'no notes'}`;
+
+      const payload = {
+        levelName: levelName,
+        levelId: levelIdRaw,
+        creator: author,
+        difficulty: String(stars),
+        levelType: levelType,
+        videoLink: videoLink || '',
+        notes: notesCombined
+      };
+
+      // 4. send to google script (POST, no-cors)
+      try {
+        // we do NOT call the check endpoint, we just POST
+        // (the original had a check + POST, we keep it simple)
+        // but the spec says: send to google script.
+        // We'll use POST with no-cors, and ignore response.
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        // no-cors means we can't read response, but we assume success
+        msgEl.textContent = 'SUBMITTED!';
+        form.reset();
+        // reset label after reset
+        updateUsernameLabel();
+        // clear optional video field (reset doesn't clear value if it's a url? it does)
+        // but we also want to clear notes
+        document.getElementById('notes').value = '';
+        document.getElementById('videoLink').value = '';
+      } catch (err) {
+        msgEl.textContent = 'ERROR! Could not submit.';
+        console.error(err);
+      }
+    });
+
+    // helper to reset form on any external trigger? not needed
+  })();
+</script>
+</body>
+</html>
